@@ -9,12 +9,9 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     publicacoes = Publicacao.objects.all()
-    perfil = Perfil.objects.get(usuario=request.user)
     return render(request, 'home.html', {
         'publicacoes': publicacoes,
         'nome': request.user.username,
-        'email': request.user.email,
-        'perfil': perfil,
     })
 
 def categorias(request):
