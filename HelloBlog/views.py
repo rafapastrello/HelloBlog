@@ -5,16 +5,8 @@ from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 def home(request):
     publicacoes = Publicacao.objects.all()
-    return render(request, 'home.html', {
-        'publicacoes': publicacoes,
-        'nome': request.user.username,
-    })
-
-def categorias(request):
     profissional = Publicacao.objects.filter(categoria = "Profissional")
     pessoal = Publicacao.objects.filter(categoria = "Pessoal")
     curriculos = Publicacao.objects.filter(categoria = "Currículos")
@@ -24,6 +16,8 @@ def categorias(request):
     curiosidades = Publicacao.objects.filter(categoria = "Curiosidades")
     eventos = Publicacao.objects.filter(categoria = "Eventos")
     return render(request, 'home.html', {
+        'publicacoes': publicacoes,
+        'nome': request.user.username,
         'profissional': profissional,
         'pessoal': pessoal,
         'curriculos': curriculos,
