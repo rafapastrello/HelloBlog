@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Login{% endblock titulo %}
+
+{% block conteudo %}
+<!-- Botão de Voltar -->
+<div class="d-flex justify-content-center align-items-center">
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</div>
+
+<!-- Conteúdo da Página de Cadastro -->
+<section class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Criar Conta</h2>
+
+                    {% if email_repeated %}
+                        <p class="text-danger">Email em uso!</p>
+                    {% endif %}
+
+                    <!-- Formulário de Cadastro -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-floating col-md-6 mb-3 text-dark">
+                                <input type="name" class="form-control" name="nome" placeholder="Nome" required>
+                                <label for="nome">Nome*</label>
+                            </div>
+
+                            <div class="form-floating col-md-6 mb-3 text-dark">
+                                <input type="name" class="form-control" name="sobrenome" placeholder="Sobrenome" required>
+                                <label for="sobrenome">Sobrenome*</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3 text-dark">
+                            <input type="email" class="form-control" name="email" placeholder="email">
+                            <label for="email">Email*</label>
+                        </div>
+
+                        <div class="form-row mb-3 text-dark">
+                            <div class="form-floating col-md-6 text-dark">
+                                <input type="date" class="form-control" name="dt_nascimento" placeholder="Data de Nascimento">
+                                <label for="dt_nascimento">Data de Nascimento*</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating text-dark mb-2">
+                            <textarea class="form-control" placeholder="Deixe uma descrição sobre você!" name="descricao" name="descricao" style="height: 100px"></textarea>
+                            <label for="descricao">Deixe uma descrição sobre você!</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto de Perfil</label>
+                            <input class="form-control form-control-sm" id="foto" name="foto" type="file" accept="image/png, image/jpeg">
+                        </div>
+
+                        <div class="form-row mb-3 text-dark">
+                            <div class="form-floating col-md-6 mb-3 text-dark">
+                                <input type="password" class="form-control" name="senha" placeholder="Senha" required>
+                                <label for="senha">Senha*</label>
+                            </div>
+                            <div class="form-floating col-md-6 mb-3 text-dark">
+                                <input type="password" class="form-control" name="confirma_senha" placeholder="Confirmar Senha" required>
+                                <label for="confirma_senha">Confirmar Senha*</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-login-neon btn-block">Criar Conta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock conteudo %}

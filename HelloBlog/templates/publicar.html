@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Postar{% endblock titulo %}
+
+{% block conteudo %}
+<p>>>> Logado como {{nome}}</p>
+<!-- Botão de Voltar -->
+<div class="d-flex justify-content-center align-items-center">
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</div>
+
+<!-- Conteúdo da Página Postar -->
+<section class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mt-3 mb-5">Publicar</h2>
+
+                    <!-- Formulário de Publicar -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-floating mb-3 text-dark">
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" required>
+                            <label for="titulo">Título*</label>
+                        </div>
+
+                        <div class="form-floating mb-3 text-dark">
+                            <select class="form-select" id="categoria" aria-label="Floating label select example" name="categoria">
+                                <option selected>Pessoal</option>
+                                <option value="Profissional">Profissional</option>
+                                <option value="Currículos">Currículos</option>
+                                <option value="Esportes">Esportes</option>
+                                <option value="Ergonomia">Ergonomia</option>
+                                <option value="Vagas">Vagas</option>
+                                <option value="Curiosidades">Curiosidades</option>
+                                <option value="Eventos">Eventos</option>
+                            </select>
+                            <label for="categoria">Categoria da Publicação*</label>
+                        </div>
+
+                        <div class="form-floating mb-3 text-dark">
+                            <textarea class="form-control" placeholder="Conteúdo da publicação" id="conteudo" name="conteudo" style="height: 100px"></textarea>
+                            <label for="conteudo">Conteúdo da publicação*</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="thumbnail" class="form-label">Thumbnail*</label>
+                            <input class="form-control form-control-sm" id="thumbnail" name="thumbnail" type="file" accept="image/png, image/jpeg">
+                        </div>
+
+                        <button type="submit" class="btn btn-login-neon btn-block">Publicar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock conteudo %}

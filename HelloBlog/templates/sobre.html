@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Sobre{% endblock titulo %}
+
+{% block conteudo %}
+<p>>>> Logado como {{nome}}</p>
+<main class="container-fluid">
+    <!-- Conteúdo da Página Sobre -->
+    <section class="container-fluid mt-4 mb-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-white mt-4 mb-4">Sobre Hello, Blog!</h2>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse
+                            lectus
+                            tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                        </p>
+                        <hr>
+                        <p class="card-text">
+                            Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque
+                            congue. Ut
+                            in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent
+                            egestas
+                            leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit
+                            sodales.
+                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                            Curae;
+                            Aliquam nibh.
+                        </p>
+                        <p class="card-text">
+                            Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam
+                            sodales
+                            hendrerit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock conteudo %}

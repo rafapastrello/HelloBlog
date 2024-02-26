@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Meus Posts{% endblock titulo %}
+
+{% block conteudo %}
+<p>>>> Logado como {{nome}}</p>
+<nav class="mt-1 mb-1">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link text-white bg-secondary active" aria-current="page" href="/minha-conta">Minha Conta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/meus-comentarios">Meus Comentários</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/meus-posts">Meus Posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/login-e-seguranca">Login e Segurança</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Informações da conta -->
+<div class="container col-md-8 ml-4">
+    <div class="row">
+        <h3 class="mt-5 mb-3">Meus Comentários</h3>
+        
+        <p>Você ainda não comentou em nenhum Post!</p>
+    </div>
+</div>
+
+
+{% endblock conteudo %}

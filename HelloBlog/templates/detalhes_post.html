@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Detalhes Post{% endblock titulo %}
+
+{% block conteudo %}
+<p>>>> Logado como {{nome}}</p>
+<!-- Conteúdo -->
+
+<!-- Botão de Voltar -->
+<div class="d-flex justify-content-center align-items-center">
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</div>
+
+<!-- Conteúdo da Página de Detalhes do Post -->
+<section class="container mt-4">
+    <div class="p-4">
+        <h1 class="card-title fs-1 text mt-4">{{publicacao.titulo}}</h1>
+
+        <p class="text-secondary mt-0 mb-5">Categoria: {{publicacao.categoria}}</p>
+
+        <img class="card-img-top mb-5" src="{{publicacao.thumbnail.url}}" class="card-img" alt="Thumbnail">
+
+        <p class="fs-5 text">{{publicacao.conteudo}}</p>
+
+        <p class="text-secondary fs-6 text mb-0">Autor: {{publicacao.autor}}</p>
+
+        <p class="text-secondary fs-6 text">Publicado em: {{publicacao.dt_publicacao}}</p>
+    </div>
+</section>
+
+<!-- Seção de Comentários -->
+<div class="mt-4 container container-sm mb-4">
+    <h3>Comentários</h3>
+
+    <!-- Formulário de Comentário -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-floating text-dark mb-2">
+            <textarea class="form-control" placeholder="Deixe seu comentário sobre o post!" name="conteudo" id="conteudo" style="height: 100px" required></textarea>
+            <label for="conteudo">Deixe seu comentário sobre o post!</label>
+        </div>
+        
+        <button type="submit" class="btn btn-neon">Enviar</button>
+    </form>
+
+    <!-- Lista de Comentários -->
+    <div class="mt-4">
+        <h4>Comentários Anteriores:</h4>
+        <ul class="list-group">
+            {% for comentario in comentarios %}
+            <li class="list-group-item py-3"><img src="{% static "img/icones/like.png" %}" class="mr-3" alt="Like" width="25px">{{comentario.conteudo}} - {{comentario.autor.username}}</li>
+
+            {% empty %}
+            <p class="list-group-item py-3">Nenhum comentário ainda</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- Botão Voltar ao topo -->
+<div class="mt-4 mb-4">
+    <div class="container">
+        <a class="text-light" href="#topo"><button type="submit" class="btn btn-login-neon btn-block">Voltar ao topo</button></a>
+    </div>
+</div>
+{% endblock conteudo %}
